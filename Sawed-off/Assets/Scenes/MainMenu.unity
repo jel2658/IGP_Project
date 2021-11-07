@@ -808,7 +808,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102900000, guid: 0322deb0d984e3145bc863051c2f20bb, type: 3}
+      - m_Target: {fileID: 11500000, guid: e8d1f0f213867a340b74ebbc6049ccfb, type: 3}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -950,7 +950,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1801746844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 79012a6e1938b964ba24f7ff5ba4045a, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1801746844
 MonoBehaviour:
   m_ObjectHideFlags: 0
