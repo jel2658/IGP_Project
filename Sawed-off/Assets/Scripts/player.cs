@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class player : MonoBehaviour
 {
     public float shot_force;
     public float rotation_force;
+    public float moveSpeed;
     Vector3 mousePos;
     Vector3 PointmousePos;
     Vector3 launchdirect; 
@@ -32,6 +35,12 @@ public class player : MonoBehaviour
     public Transform groundCheck;
     public float waitTime; //Time the player waits after fireing to flip up
     private float timer; //Actual timer to keep time
+    public TMP_Text AmmoText;
+
+    //pickup boolians
+    private bool PumpAction;
+    private bool GrenadeLauncher;
+    public float GrenadePower;
     
     // Start is called before the first frame update
     void Start()
@@ -41,11 +50,14 @@ public class player : MonoBehaviour
         rg2d = GetComponent<Rigidbody2D>();
         boxcld = GetComponent<BoxCollider2D>();
         ammo = 2;
+        PumpAction = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        AmmoText.text = "Ammo: " + ammo;
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, CheckRadius, whatIsGround);
         if(isGrounded == true)
@@ -78,15 +90,13 @@ public class player : MonoBehaviour
         //launchdirection is the point the player gets launched to, and shot_force is negative to make sure you are going opposite of the mouse
         launchdirect = ((launchPoint.transform.position - transform.position)) * -shot_force; //Need to subtract the player position from launchPoint to get its child position
    
-        if (Input.GetButtonDown("Fire1") && ammo != 0)
+        if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == false)
         {
             Debug.Log("Launchdirection = " + launchdirect);
             rg2d.velocity = launchdirect;
 
             //Sets the recoil rotation
             float rotate_angle = Mathf.Atan2(launchdirect.y, launchdirect.x) * Mathf.Rad2Deg - 90;
-
-            Debug.Log("Angle = " + rotate_angle);
 
             if (angle < 90 && angle > 0)
             {
@@ -103,25 +113,71 @@ public class player : MonoBehaviour
             --ammo; //fire a shot
         }
 
+        //Grenade launcher fire
+        if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == true)
+        {
+            Debug.Log("Grenade fired");
+            rg2d.velocity = launchdirect * GrenadePower;
+
+            //Sets the recoil rotation
+            float rotate_angle = Mathf.Atan2(launchdirect.y, launchdirect.x) * Mathf.Rad2Deg - 90;
+
+            if (angle < 90 && angle > 0)
+            {
+                rg2d.AddTorque((Mathf.Deg2Rad * rotate_angle) * -rotation_force);
+            }
+            else if (angle < 0 && angle > -90)
+            {
+                rg2d.AddTorque((Mathf.Deg2Rad * rotate_angle) * -rotation_force);
+            }
+            else { rg2d.AddTorque((Mathf.Deg2Rad * rotate_angle) * rotation_force); }
+
+            fired = true; //a shot was taken so now the playe is commited to physics since this is true
+            timer = waitTime; //set the ground timer as a shot has been fired and it is reset
+            --ammo; //fire a shot
+            GrenadeLauncher = false;
+        }
+
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1 && rg2d.velocity.y < 0.0001 && fired == false)
+        {
+            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * moveSpeed * Time.deltaTime;
+        }
+
         //Flip up and reload
         if (timer < 0 && fired == true) //conditions are that a shot was fired and the player was on the ground for the waitTime amount
         {
-            rg2d.velocity = Vector3.up * 10; //Pops player up so the rotation can occur and because i think it looks nice
+            rg2d.AddForce(Vector3.up * 3, ForceMode2D.Impulse); //Pops player up so the rotation can occur and because i think it looks nice
       
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 360 * Time.deltaTime); //begins the flip that continues in the next flip
             flip = true;
         }
         if (flip == true) //Best way i could get the smooth rotation and flip to occur
         {
-           
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 360 * Time.deltaTime);
             if (transform.rotation == Quaternion.identity)
             {
-                flip = false;
-                fired = false;
-                ammo = 2;
+                    fired = false;
+                    flip = false;
+                if (PumpAction == false && GrenadeLauncher == false || ammo == 0  ) 
+                {
+                    ammo = 2;
+                }
             }
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 360 * Time.deltaTime);
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("PumpAction"))
+        {
+            collision.gameObject.SetActive(false);
+            ammo = 6;
+            PumpAction = true;
+        }
+        if (collision.transform.CompareTag("GrenadeLauncher"))
+        {
+            ammo = 1;
+            GrenadeLauncher = true;
         }
     }
 }
