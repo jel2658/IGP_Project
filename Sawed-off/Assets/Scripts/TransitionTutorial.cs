@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TransitionTutorial : MonoBehaviour
 {
+    //public Button btn;
+
     public void NextScene()
     {
         SceneManager.LoadScene("SampleScene");
@@ -13,12 +15,18 @@ public class TransitionTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //btn = GetComponent<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void onMouseUp()
+    {
+        Debug.Log("Tutorial clicked.");
+        NextScene();
     }
 }
