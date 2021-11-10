@@ -23,10 +23,4 @@ public class TransitionTutorial : MonoBehaviour
     {
         
     }
-
-    void onMouseUp()
-    {
-        Debug.Log("Tutorial clicked.");
-        NextScene();
-    }
 }
