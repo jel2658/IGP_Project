@@ -238,12 +238,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f09869214e1a9d4aac73680242cf5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: ca1d11183b6fdca458e8d033183dc7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundaryX: 2.5
-  BoundaryY: 1.54
-  player: {fileID: 2089800301}
+  speed: 0.25
+  LookAt: {fileID: 2089800301}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1067,7 +1066,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
@@ -1098,11 +1097,11 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  CheckRadius: 1.2
+  CheckRadius: 1
   groundCheck: {fileID: 1591765280}
   waitTime: 0.75
   AmmoText: {fileID: 634119570}
-  GrenadePower: 5
+  GrenadePower: 2
 --- !u!61 &2089800299
 BoxCollider2D:
   m_ObjectHideFlags: 0

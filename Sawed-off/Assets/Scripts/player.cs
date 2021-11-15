@@ -68,6 +68,7 @@ public class player : MonoBehaviour
             }
             //Debug.Log("Timer = " + timer);
         }
+        
 
         Vector3 Pointermouse = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -92,6 +93,7 @@ public class player : MonoBehaviour
    
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == false)
         {
+           
             Debug.Log("Launchdirection = " + launchdirect);
             rg2d.velocity = launchdirect;
 
@@ -117,6 +119,7 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == true)
         {
             Debug.Log("Grenade fired");
+           
             rg2d.velocity = launchdirect * GrenadePower;
 
             //Sets the recoil rotation
@@ -176,6 +179,7 @@ public class player : MonoBehaviour
         }
         if (collision.transform.CompareTag("GrenadeLauncher"))
         {
+            collision.gameObject.SetActive(false);
             ammo = 1;
             GrenadeLauncher = true;
         }
