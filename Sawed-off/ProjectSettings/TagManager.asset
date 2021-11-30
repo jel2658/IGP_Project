@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PumpAction
   - GrenadeLauncher
+  - Enemy
   layers:
   - Default
   - TransparentFX
