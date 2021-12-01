@@ -8,4 +8,12 @@ public class Exit : MonoBehaviour
     {
         Application.Quit();
     }
+
+    void Update()
+    {
+        /*if (gameObject.GetComponent<Button>().OnClick())
+        {
+
+        }*/
+    }
 }
