@@ -41,6 +41,13 @@ public class player : MonoBehaviour
     private bool PumpAction;
     private bool GrenadeLauncher;
     public float GrenadePower;
+
+    //The animatopn controller
+    public Animator animator;
+
+    //variables for platform types
+    public float BounceForce;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -93,7 +100,10 @@ public class player : MonoBehaviour
    
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == false)
         {
-           
+            fired = true; //a shot was taken so now the playe is commited to physics since this is true
+
+            rg2d.isKinematic = false; //Unfreezes the player character making it able to move and rotate
+            rg2d.constraints = RigidbodyConstraints2D.None;
             Debug.Log("Launchdirection = " + launchdirect);
             rg2d.velocity = launchdirect;
 
@@ -110,7 +120,7 @@ public class player : MonoBehaviour
             }
             else { rg2d.AddTorque((Mathf.Deg2Rad * rotate_angle) * rotation_force); }
 
-            fired = true; //a shot was taken so now the playe is commited to physics since this is true
+           
             timer = waitTime; //set the ground timer as a shot has been fired and it is reset
             --ammo; //fire a shot
         }
@@ -119,7 +129,10 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == true)
         {
             Debug.Log("Grenade fired");
-           
+            fired = true; //a shot was taken so now the playe is commited to physics since this is true
+
+            rg2d.isKinematic = false; //Unfreezes the player character making it able to move and rotate
+            rg2d.constraints = RigidbodyConstraints2D.None;
             rg2d.velocity = launchdirect * GrenadePower;
 
             //Sets the recoil rotation
@@ -135,16 +148,29 @@ public class player : MonoBehaviour
             }
             else { rg2d.AddTorque((Mathf.Deg2Rad * rotate_angle) * rotation_force); }
 
-            fired = true; //a shot was taken so now the playe is commited to physics since this is true
+            
             timer = waitTime; //set the ground timer as a shot has been fired and it is reset
             --ammo; //fire a shot
             GrenadeLauncher = false;
         }
 
+
+        //player movement
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1 && rg2d.velocity.y < 0.0001 && fired == false)
         {
             transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * moveSpeed * Time.deltaTime;
+            
         }
+        //animation condition for right left walking
+        if(fired == true)
+        {
+            animator.SetFloat("Horizontal", 0); //Sets it so no matter what if a shot was fired no walking animation can take place
+        }
+        else
+        {
+            animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal")); 
+        }
+        
 
         //Flip up and reload
         if (timer < 0 && fired == true) //conditions are that a shot was fired and the player was on the ground for the waitTime amount
@@ -161,7 +187,7 @@ public class player : MonoBehaviour
             {
                     fired = false;
                     flip = false;
-                if (PumpAction == false && GrenadeLauncher == false || ammo == 0  ) 
+                if (PumpAction == false && GrenadeLauncher == false && ammo != 2 || ammo == 0  ) 
                 {
                     ammo = 2;
                 }
@@ -182,6 +208,26 @@ public class player : MonoBehaviour
             collision.gameObject.SetActive(false);
             ammo = 1;
             GrenadeLauncher = true;
+        }
+        if (collision.transform.CompareTag("BouncePad"))
+        {
+            rg2d.velocity += Vector2.up * BounceForce;
+        }
+        if (collision.transform.CompareTag("StickyPlatform"))
+        {
+
+            //This ill make it so the player will just freeze where is it giving the illusion of it sticking to the wall
+            rg2d.velocity = Vector2.zero;
+            rg2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rg2d.isKinematic = true;
+            //This will then be set to false once the player fires
+
+            //It also reloads the shotgun
+            if (PumpAction == false && GrenadeLauncher == false && ammo != 2 || ammo == 0)
+            {
+                ammo = 2;
+            }
+
         }
     }
 }
