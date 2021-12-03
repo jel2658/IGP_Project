@@ -28,6 +28,7 @@ public class EnemyWalk : MonoBehaviour
             anim.SetBool("WalkingLeft", false);
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+        
     }
 }

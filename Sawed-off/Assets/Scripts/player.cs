@@ -14,8 +14,8 @@ public class player : MonoBehaviour
     Vector3 launchdirect; 
     public Camera cam;
 
-    public GameObject launchPoint;//The shotgun where we get our flat launch power from, and is the acutal shot gun on the model.
-    public GameObject pivot;// the empty game object that the launch point is attatched to allowing it to rotate.
+    public GameObject launchPoint;  //The shotgun where we get our flat launch power from, and is the acutal shot gun on the model.
+    public GameObject pivot;        // the empty game object that the launch point is attatched to allowing it to rotate.
     private Vector3 pointerpos;
 
     public Transform boi;
