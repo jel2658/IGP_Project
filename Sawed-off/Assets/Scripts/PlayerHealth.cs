@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth;
     public int currentHealth;
     bool isDead;
+
+    public TMP_Text healthText;
 
     void Awake()
     {
@@ -26,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Death();
         }
+        healthText.text = "Health: " + currentHealth;
     }
 
     void Death()

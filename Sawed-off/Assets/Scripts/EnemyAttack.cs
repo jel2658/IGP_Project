@@ -18,11 +18,11 @@ public class EnemyAttack : MonoBehaviour
         
     }
 
-    void OnColliderEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Player")
+        if (collision.collider.tag == "Player")
         {
-            other.GetComponent<PlayerHealth>().currentHealth -= damage;
+            collision.collider.GetComponent<PlayerHealth>().currentHealth -= damage;
         }
     }
 }
