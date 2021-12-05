@@ -10,11 +10,14 @@ public class EnemyWalk : MonoBehaviour
     public float speed;
     private Transform target;
 
+    //bool playerDead;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         target = player.GetComponent<Transform>();
+        //playerDead = player.GetComponent<PlayerHealth>().isDead;
     }
 
     // Update is called once per frame
@@ -29,6 +32,5 @@ public class EnemyWalk : MonoBehaviour
         }
 
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
-        
     }
 }

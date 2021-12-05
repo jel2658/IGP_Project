@@ -18,11 +18,21 @@ public class EnemyAttack : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log("Collided.");
+
+        if (collision.collider.tag == "Player")
+        {
+            collision.collider.GetComponent<PlayerHealth>().takeDamage(damage);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<PlayerHealth>().currentHealth -= damage;
+            collision.collider.GetComponent<PlayerHealth>().takeDamage(damage);
         }
     }
 }
