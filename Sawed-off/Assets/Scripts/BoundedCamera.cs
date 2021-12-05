@@ -41,15 +41,18 @@ public class BoundedCamera : MonoBehaviour
             if (transform.position.y < LookAt.position.y)
             {
                 delta.y = dy - boundsY;
+                
             }
             else
             {
                 delta.y = dy + boundsY;
+                
             }
         }
-
+   
         //move Camera
         desiredposition = transform.position + delta;
+        //if (desiredposition.y < 3) { desiredposition.y = 3; }
         transform.position = Vector3.Lerp(transform.position, desiredposition, speed);
     }
 }
