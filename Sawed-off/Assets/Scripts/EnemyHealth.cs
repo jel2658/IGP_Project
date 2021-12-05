@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        alive = true;
     }
 
     // Update is called once per frame
@@ -18,12 +18,12 @@ public class EnemyHealth : MonoBehaviour
         if (!alive)
         {
             gameObject.GetComponent<EnemyWalk>().enabled = false;
-            transform.Rotate(0f, 0f, 45f, Space.Self);
         }
     }
 
     public void Shot()
     {
         alive = false;
+        transform.Rotate(0f, 0f, 45f, Space.Self);
     }
 }

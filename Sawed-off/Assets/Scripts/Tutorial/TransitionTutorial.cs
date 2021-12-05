@@ -9,7 +9,7 @@ public class TransitionTutorial : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TutorialScene");
     }
 
     // Start is called before the first frame update
