@@ -69,6 +69,7 @@ public class player : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, CheckRadius, whatIsGround);
         if(isGrounded == true)
         {
+            
             if((timer != 0 || timer > 0) && Mathf.Abs(rg2d.velocity.x) < 0.001f && Mathf.Abs(rg2d.velocity.y) < 0.001f)
             {
                 timer -= Time.deltaTime;
@@ -156,7 +157,7 @@ public class player : MonoBehaviour
 
 
         //player movement
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1 && rg2d.velocity.y < 0.0001 && fired == false)
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1 && rg2d.velocity.y < 0.0001 && fired == false && flip == false)
         {
             transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * moveSpeed * Time.deltaTime;
             
