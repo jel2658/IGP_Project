@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - StickyPlatform
+  - GrenadeLauncher
+  - PumpAction
+  - Pickup
   layers:
   - Default
   - TransparentFX
