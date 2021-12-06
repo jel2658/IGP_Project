@@ -18,6 +18,7 @@ public class BoundedCamera : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate()
     {
+        
         Vector3 delta = Vector3.zero;
 
         float dx = LookAt.position.x - transform.position.x;
@@ -54,5 +55,6 @@ public class BoundedCamera : MonoBehaviour
         desiredposition = transform.position + delta;
         //if (desiredposition.y < 3) { desiredposition.y = 3; }
         transform.position = Vector3.Lerp(transform.position, desiredposition, speed);
+        
     }
 }

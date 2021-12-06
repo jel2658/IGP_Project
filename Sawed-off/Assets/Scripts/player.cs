@@ -86,7 +86,7 @@ public class player : MonoBehaviour
         //float angle = Mathf.Acos((Vector3.Dot(point, Pointermouse) / (origin.magnitude * Pointermouse.magnitude))) * Mathf.Rad2Deg;
         float angle = Mathf.Atan2(point.y, point.x) * Mathf.Rad2Deg - 90;
 
-        Debug.DrawRay(transform.position, point, Color.red);
+        //Debug.DrawRay(transform.position, point, Color.red); //debug for the mouse point
 
         //define rotation along a specific axis using angle
         Quaternion angleAxis = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -229,6 +229,10 @@ public class player : MonoBehaviour
                 ammo = 2;
             }
 
+        }
+        if (collision.transform.CompareTag("Checkpoint"))
+        {
+            collision.gameObject.GetComponent<Checkpoint>().SetCheckpoint();
         }
     }
 

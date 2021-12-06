@@ -9,6 +9,9 @@ TagManager:
   - GrenadeLauncher
   - PumpAction
   - Pickup
+  - BouncePad
+  - BreakAway
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
