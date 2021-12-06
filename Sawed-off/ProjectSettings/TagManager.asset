@@ -10,8 +10,11 @@ TagManager:
   - PumpAction
   - Pickup
   - BouncePad
+<<<<<<< HEAD
   - BreakAway
   - Checkpoint
+=======
+>>>>>>> 2c7309c49e46fc446da5e70b29f41ad259c2e7b0
   layers:
   - Default
   - TransparentFX
