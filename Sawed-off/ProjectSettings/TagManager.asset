@@ -9,6 +9,7 @@ TagManager:
   - GrenadeLauncher
   - PumpAction
   - Pickup
+  - BouncePad
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
     public TMP_Text healthText;
 
+    Rigidbody2D rb;
+
     void Awake()
     {
         currentHealth = startingHealth;
@@ -24,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         damageCountdown = 0f;
         isDead = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -63,6 +66,20 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= amount;
             tookDamage = true;
             damageCountdown = 3f;
+        }
+    }
+
+    void OnColliderEnter2D(Collider2D other)
+    {
+        float force = 3;
+
+        if (other.tag == "Enemy") // Code to push the player away from the enemy.
+        {
+            Vector2 dir = transform.position - other.transform.position;
+
+            dir = -dir.normalized;
+
+            rb.AddForce(dir * force * Time.deltaTime);
         }
     }
 }
