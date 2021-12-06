@@ -231,4 +231,9 @@ public class player : MonoBehaviour
 
         }
     }
+
+    public void Reload(int amount)
+    {
+        ammo += amount;
+    }
 }
