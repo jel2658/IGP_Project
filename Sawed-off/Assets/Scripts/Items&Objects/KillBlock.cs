@@ -10,6 +10,8 @@ public class KillBlock : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        GameObject[] tmp = GameObject.FindGameObjectsWithTag("Player");
+        player = tmp[0].GetComponent<Transform>();
         Checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
     }
 
