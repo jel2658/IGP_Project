@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
         gameObject.GetComponent<EnemyWalk>().enabled = false;
         anim.SetTrigger("Death");
         gameObject.GetComponent<EnemyAttack>().enabled = false;
+        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
