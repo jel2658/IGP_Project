@@ -240,4 +240,14 @@ public class player : MonoBehaviour
     {
         ammo += amount;
     }
+
+    public bool checkFired()
+    {
+        return fired;
+    }
+
+    public float checkVelocityX()
+    {
+        return rg2d.velocity.x;
+    }
 }

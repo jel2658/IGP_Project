@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
     {
         //Debug.Log("Collided.");
 
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player" && GetComponent<EnemyHealth>().alive)
         {
             collision.collider.GetComponent<PlayerHealth>().takeDamage(damage);
         }
@@ -30,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player" && GetComponent<EnemyHealth>().alive)
         {
             collision.collider.GetComponent<PlayerHealth>().takeDamage(damage);
         }
