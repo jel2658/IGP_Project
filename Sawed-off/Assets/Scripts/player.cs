@@ -53,6 +53,9 @@ public class player : MonoBehaviour
     int fsound; //fire sound
     int PAsound; //pump action sound
     int GLsound; //grenade launcher sound
+
+    //switch guns
+    SwitchGuns SG;//switch guns
     
     
     // Start is called before the first frame update
@@ -68,6 +71,7 @@ public class player : MonoBehaviour
         fsound = 1;
         PAsound = 1;
         GLsound = 1;
+        SG = GetComponent<SwitchGuns>();
     }
 
     // Update is called once per frame
@@ -208,6 +212,7 @@ public class player : MonoBehaviour
                     flip = false;
                 if (PumpAction == false && GrenadeLauncher == false && ammo != 2 || ammo == 0  ) 
                 {
+                    SG.saw();
                     ammo = 2;
                 }
             }
@@ -218,6 +223,7 @@ public class player : MonoBehaviour
     {
         if (collision.transform.CompareTag("PumpAction"))
         {
+            SG.pump();
             plsfx.PumpPickup(PAsound);
             PAsound = Random.Range(1, 4);
             collision.gameObject.SetActive(false);
@@ -248,6 +254,7 @@ public class player : MonoBehaviour
             //It also reloads the shotgun
             if (PumpAction == false && GrenadeLauncher == false && ammo != 2 || ammo == 0)
             {
+                SG.saw();
                 ammo = 2;
             }
 

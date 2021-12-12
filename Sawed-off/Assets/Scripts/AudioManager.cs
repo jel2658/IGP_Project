@@ -12,6 +12,8 @@ public class AudioManager: MonoBehaviour
     public Sound[] GrenadeLauncher;
     public Sound[] Music;
 
+    public string theme;
+
     public static AudioManager instance;
 
     // Start is called before the first frame update
@@ -54,11 +56,20 @@ public class AudioManager: MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
         }
+        foreach (Sound s in Music)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
     }
 
     private void Start()
     {
-        //PlayMusic("Level1");
+        PlayMusic(theme);
     }
 
     public void PlayGunshot(string name)
@@ -77,11 +88,9 @@ public class AudioManager: MonoBehaviour
         Sound s = Array.Find(GrenadeLauncher, sound => sound.name == name);
         s.source.Play();
     }
-    /*
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(Music, sound => sound.name == name);
         s.source.Play();
     }
-    */
 }
