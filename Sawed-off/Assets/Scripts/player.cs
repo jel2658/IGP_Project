@@ -47,6 +47,12 @@ public class player : MonoBehaviour
 
     //variables for platform types
     public float BounceForce;
+
+    //For triggering sounds
+    private PlayerSFX plsfx;
+    int fsound; //fire sound
+    int PAsound; //pump action sound
+    int GLsound; //grenade launcher sound
     
     
     // Start is called before the first frame update
@@ -58,6 +64,10 @@ public class player : MonoBehaviour
         boxcld = GetComponent<BoxCollider2D>();
         ammo = 2;
         PumpAction = false;
+        plsfx = GetComponent<PlayerSFX>();
+        fsound = 1;
+        PAsound = 1;
+        GLsound = 1;
     }
 
     // Update is called once per frame
@@ -101,6 +111,10 @@ public class player : MonoBehaviour
    
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == false)
         {
+            //triggering sound
+            plsfx.Gunshot(fsound);
+            fsound = Random.Range(1, 5); //chooses random number between 1 & 5 for what the next gunshot sound will be
+
             fired = true; //a shot was taken so now the playe is commited to physics since this is true
 
             rg2d.isKinematic = false; //Unfreezes the player character making it able to move and rotate
@@ -129,6 +143,10 @@ public class player : MonoBehaviour
         //Grenade launcher fire
         if (Input.GetButtonDown("Fire1") && ammo != 0 && GrenadeLauncher == true)
         {
+
+            //triggering sound
+            plsfx.GLpickup(5);
+
             Debug.Log("Grenade fired");
             fired = true; //a shot was taken so now the playe is commited to physics since this is true
 
@@ -200,12 +218,16 @@ public class player : MonoBehaviour
     {
         if (collision.transform.CompareTag("PumpAction"))
         {
+            plsfx.PumpPickup(PAsound);
+            PAsound = Random.Range(1, 4);
             collision.gameObject.SetActive(false);
             ammo = 6;
             PumpAction = true;
         }
         if (collision.transform.CompareTag("GrenadeLauncher"))
         {
+            plsfx.GLpickup(GLsound);
+            GLsound = Random.Range(1, 4);
             collision.gameObject.SetActive(false);
             ammo = 1;
             GrenadeLauncher = true;
