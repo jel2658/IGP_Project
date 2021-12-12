@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7917298192621484267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7917298192621484269}
+  - component: {fileID: 7917298192621484266}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7917298192621484269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917298192621484267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.666555, y: 1.8128173, z: -7.8505735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7917298192621484266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917298192621484267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec3bf42889e21a4aa8a65fd1c8619ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunShots:
+  - name: pow
+    clip: {fileID: 8300000, guid: e862fa7e267d9e04fad9882091878aa3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: pow2
+    clip: {fileID: 8300000, guid: df52e82afb3f028489044b53bc3dbcd5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: blam
+    clip: {fileID: 8300000, guid: 2eebc7af80f0d2b49aeb7199714fe0fb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: boom
+    clip: {fileID: 8300000, guid: 4769a9f723a5ed7458d88c72bf2f17bc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: koom
+    clip: {fileID: 8300000, guid: 0d09cc5f5f1e6de46bf6f20797ea79a1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  pumpAction:
+  - name: pumpaction
+    clip: {fileID: 8300000, guid: 090fb6e16b5d7924dbca904ad4b18bd2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: pumpaction2
+    clip: {fileID: 8300000, guid: a7e81e46d1b771b4dbf6108834079873, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: chikchik
+    clip: {fileID: 8300000, guid: f0751fd68e46c154c838329e93e260bb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shorty
+    clip: {fileID: 8300000, guid: 6be3520f791cb9f40af45e3e2d3cd1ef, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  GrenadeLauncher:
+  - name: glch
+    clip: {fileID: 8300000, guid: ecf534d6bbdc96940b64f07963217a05, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: glch2
+    clip: {fileID: 8300000, guid: 84eabb5b628b85340963193368079b9a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: glboom
+    clip: {fileID: 8300000, guid: 4301a130c4a246a499d24696877abd5c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: thump
+    clip: {fileID: 8300000, guid: 6cd48848d1ea2dc45a57d681dca47df8, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: kboom
+    clip: {fileID: 8300000, guid: 071483636002b3d4da597de128da8d64, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  Music: []
