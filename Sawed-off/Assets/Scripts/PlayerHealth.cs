@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 
     Rigidbody2D rb;
 
+    Animator anim;
+
     void Awake()
     {
         currentHealth = startingHealth;
@@ -27,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         damageCountdown = 0f;
         isDead = false;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<player>().enabled = false;
         transform.Rotate(0f, 0f, 45f, Space.Self);
         isDead = true;
+        anim.SetTrigger("Death");
     }
 
     public void takeDamage(int amount)
