@@ -270,6 +270,11 @@ public class player : MonoBehaviour
         ammo += amount;
     }
 
+    public void setAmmo(int amount)
+    {
+        ammo = amount;
+    }
+
     public bool checkFired()
     {
         return fired;

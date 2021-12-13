@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public int damage;
+    float reloadTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        reloadTimer = 5f;
     }
 
     // Update is called once per frame
@@ -33,6 +34,16 @@ public class EnemyAttack : MonoBehaviour
         if (collision.collider.tag == "Player" && collision.collider.GetComponent<player>().checkVelocityX() < 1.0f && GetComponent<EnemyHealth>().alive)
         {
             collision.collider.GetComponent<PlayerHealth>().takeDamage(damage);
+        } else if (collision.collider.tag == "Player")
+        {
+            if (reloadTimer > 0)
+            {
+                reloadTimer -= Time.deltaTime;
+            } else
+            {
+                collision.collider.GetComponent<player>().setAmmo(2);
+                reloadTimer = 5f;
+            }
         }
     }
 }
