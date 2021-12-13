@@ -21,7 +21,7 @@ public class ToLevel3 : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneManager.LoadScene("Level3");
+            SceneManager.LoadScene("Level 3");
         }
     }
 }
