@@ -434,6 +434,8 @@ MonoBehaviour:
   sawL: {fileID: 21300000, guid: 4c12f30c6a8bde84a8c39e1ea1aeb0f3, type: 3}
   pumpR: {fileID: 21300000, guid: 8e10c893970f8ab42814bf5d42195704, type: 3}
   pumpL: {fileID: 21300000, guid: f684b8d87a4f3634c98b22257ecde343, type: 3}
+  GlR: {fileID: 21300000, guid: d9fad4685e8e75640b671508b451d0fb, type: 3}
+  GlL: {fileID: 21300000, guid: bda4d79df760e5c48a8342581550aafa, type: 3}
   rhand: {fileID: 7393637447274018909}
   lhand: {fileID: 4535442375586670237}
 --- !u!114 &-8639777375294336687

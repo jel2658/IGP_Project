@@ -10,6 +10,9 @@ public class SwitchGuns : MonoBehaviour
     public Sprite pumpR;
     public Sprite pumpL;
 
+    public Sprite GlR;
+    public Sprite GlL;
+
     public SpriteRenderer rhand;
     public SpriteRenderer lhand;
     public void pump()
@@ -22,5 +25,11 @@ public class SwitchGuns : MonoBehaviour
     {
         rhand.sprite = sawR;
         lhand.sprite = sawL;
+    }
+
+    public void GL()
+    {
+        rhand.sprite = GlR;
+        lhand.sprite = GlL;
     }
 }
